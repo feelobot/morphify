@@ -9,4 +9,5 @@ gem 'dm-core'
 gem 'dm-validations'
 gem 'mongo'
 gem 'cucumber'
-
+gem 'travis'
+gem 'rake'

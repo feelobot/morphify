@@ -1,5 +1,3 @@
-MONGOHQ_URL=mongodb://user:pass@server.mongohq.com/db_name
-
 require 'mongo'
 require 'rubygems'
 require 'sinatra'
@@ -35,6 +33,14 @@ When /^I connect to mongohq$/ do
     @db_connection
   end
 end
+
+When /^query the database for the top (\d+) songs$/ do |arg1|
+  pending
+  def get_top_5_songs
+
+  end
+end
+
 
 #Download YouTube Video & Extract Audio
 helpers do 

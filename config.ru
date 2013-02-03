@@ -1,3 +1,3 @@
 # encoding: UTF-8
-require './site'
+require 'features/site'
 run Sinatra::Application
