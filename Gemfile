@@ -1,3 +1,5 @@
+LANG="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
 source :rubygems
 gem 'sinatra', '1.1.0'
 gem 'thin'

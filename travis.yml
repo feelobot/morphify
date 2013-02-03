@@ -9,3 +9,7 @@ rvm:
   - rbx-19mode
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
+
+env:
+  global:
+    - secure: "hVSSqzmBAhQuzFCZfE15gtdQnd5H3Va1MkJZATAxzpOsuHF5IKeDA7oIwgX9\nVOYHz0rFGBN/vgvZsU97ELihzgu0qXKSt9LppxI847Vv+4lL/g+Tg8ku+wTS\nVXbmt9+aCF5xzcYPC9iW2Mdy6C1fJttNoRLrfAnLmnx0HlpFIXc="
