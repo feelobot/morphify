@@ -3,7 +3,6 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'cucumber'
-require 'uri'
 #require 'sass'
 
 #Define Song Directory
