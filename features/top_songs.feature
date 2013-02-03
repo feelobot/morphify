@@ -3,8 +3,9 @@ Feature: Top Songs
   As as developer
   I want to connect to a database & output results 
 
-  Scenario: Display Top 5 Songs
+  Scenario: Display Top 5 Chipmunked Songs
   When I connect to mongohq
-  And query the database for the top 5 songs
-  Then I should get a json response with 5 items
+  And I grab all of the available collections
+  And I search for the top five chipmunked songs
+  Then I should get a valid json response
   

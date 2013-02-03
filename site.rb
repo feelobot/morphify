@@ -3,26 +3,12 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'cucumber'
+require 'uri'
 #require 'sass'
-
 
 #Define Song Directory
 @song_dir = "public/songs/"
 
-### MODELS
-=begin
-class Audio
-  include DataMapper::Resource
-  property :id,         Integer, :serial=>true
-  property :title,      String
-  property :ytid,       String
-  property :created_at, DateTime
-  property :chip_count, Integer, :default=>0
-  property :back_count, Integer, :default=>0
-
-  validates_present :title,:ytid
-end
-=end
 When /^I connect to mongohq$/ do
   def get_connection
     return @db_connection if @db_connection
@@ -32,13 +18,27 @@ When /^I connect to mongohq$/ do
     @db_connection.authenticate(db.user, db.password) unless (db.user.nil? || db.user.nil?)
     @db_connection
   end
+  @db = get_connection
 end
 
-When /^query the database for the top (\d+) songs$/ do |arg1|
-  pending
-  def get_top_5_songs
+When /^I grab all of the available collections$/ do
+  puts "Collections"
+  puts "==========="
+  @collections = @db.collection_names
+  puts @collections
+end
 
-  end
+When /^I search for the top five chipmunked songs$/ do
+  @songs_selected= @collections[1]
+  @coll = @db.collection(@songs_selected)
+  @docs = @coll.find().limit(5)
+end
+
+Then /^I should get a valid json response$/ do
+  puts "\nDocuments in #{@songs_selected}"
+  puts "  #{@docs.count()} documents(s) found"
+  puts "=========================="
+  @docs.each{ |doc| puts doc.to_json }
 end
 
 
