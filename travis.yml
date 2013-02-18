@@ -11,4 +11,4 @@ rvm:
 # script: bundle exec rspec spec
 env:
   global:
-    - secure: "WQ+y2WdOB6TTi+Yuc57GK+sObikwes33flh6mNCvyoRLRl1Kh++PmzRpbGDM\nCpWeMBjaW8V0XpvawLS5B5BvQRKwPZNvi0tT/EeW5Cb1hAdrZ29oZnrLOIQd\nzQwRY/5e6iafZjCWvgsvt1wCOg/RE+4DAwVwh6kVle8kjvsQ/20="
+    - secure: MONGOHQ_URL=mongodb://feelobot:k1zkazkontrol@linus.mongohq.com:10023/morphify
