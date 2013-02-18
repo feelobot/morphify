@@ -11,4 +11,4 @@ rvm:
 # script: bundle exec rspec spec
 env:
   global:
-    - secure: "WrvfXZi2357S6WntVkBr0MHNbfvm8G5oFHRCD30D7V78ONhHnV5BGO0BELA2\n9sf4h6KZn5ZQusyuMp8FM8cdbjGrwcDm3f+GYuZllFRgGErhkbHECXJT2xOh\n2med/EcPrNVKZvidL6rKgQ9805NG3inXZyWVneeJ7IaHcl6OjoI="
+    - secure: "r7/NmZAYaJvSBhh5lkLAiz3ZuijuZcAFfxTOQK60vbKOGdDD9InghYQlZiO+\nshLdWqxS8mH++qr/D5KQ9QdRkK6trSqzlEIU5SBovYD1TKyH2l7unOBhsedp\nLuyrK8v2CKBIR6gfWcmSrRAK+g795Utbvl5CBJ65T26Ls2yl0ps="
