@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
-
+$MONGOHQ_URL='mongodb://feelobot:k1zkazkontrol@linus.mongohq.com:10023/morphify'
 Cucumber::Rake::Task.new(:default) do |t|
-  t.cucumber_opts = "features --format pretty -r site.rb $MONGOHQ_URL='mongodb://feelobot:k1zkazkontrol@linus.mongohq.com:10023/morphify'"
+  t.cucumber_opts = "features --format pretty -r site.rb $MONGOHQ_HRL"
 end
