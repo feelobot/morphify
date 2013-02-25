@@ -57,6 +57,7 @@ GEM
       slop (~> 3.4)
     rack (1.5.2)
     rake (10.0.3)
+    redis (3.0.2)
     sass (3.2.5)
     shotgun (0.9)
       rack (>= 1.0)
@@ -94,6 +95,7 @@ DEPENDENCIES
   haml
   mongo
   rake
+  redis
   sass
   shotgun
   sinatra (= 1.1.0)

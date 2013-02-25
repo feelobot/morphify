@@ -1,52 +1,39 @@
-require 'mongo'
 require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'cucumber'
 require 'uri'
-#require 'sass'
+require 'redis'
 
 #Define Song Directory
 @song_dir = "public/songs/"
 
-When /^I connect to mongohq$/ do
-  def get_connection
-    return @db_connection if @db_connection
-    db = URI.parse(ENV['MONGOHQ_URL'])
-    db_name = db.path.gsub(/^\//, '')
-    @db_connection = Mongo::Connection.new(db.host, db.port).db(db_name)
-    @db_connection.authenticate(db.user, db.password) unless (db.user.nil? || db.user.nil?)
-    @db_connection
+When /^I connect to redis$/ do
+  #Create Redis Object
+  @r = Redis.new
+end
+
+And /^I search for the top five chipmunked songs$/ do
+  @top5 = @r.zrevrangebyscore("chipmunked","+inf","-inf",:with_scores => true, :limit => [0, 5])
+end
+
+Then /^I should get a valid output$/ do
+  puts "Top 5 are: #{@top5}"
+end
+
+Then /^I should be able to output the songs artist and title$/ do
+  @top5.each do |x|
+    key = x[0]
+    song = @r.hgetall("songs:#{key}")
+    puts song
   end
-  @db = get_connection
 end
 
-When /^I grab all of the available collections$/ do
-  puts "Collections"
-  puts "==========="
-  @collections = @db.collection_names
-  puts @collections
-end
-
-When /^I search for the top five chipmunked songs$/ do
-  @songs_selected= @collections[1]
-  @coll = @db.collection(@songs_selected)
-  @docs = @coll.find().limit(5)
-end
-
-Then /^I should get a valid json response$/ do
-  puts "\nDocuments in #{@songs_selected}"
-  puts "  #{@docs.count()} documents(s) found"
-  puts "=========================="
-  @docs.each{ |doc| puts doc.to_json }
-end
-
-
-#Download YouTube Video & Extract Audio
+#Download ~ YouTubs Video & Extract Audio
 helpers do 
   def extract_audio
     @ytid=params[:url]
-    `youtube-dl --extract-audio --audio-format=wav -k http://www.youtube.com/watch?v=#{@ytid}`
+    `youtube-dl --extract-audio --audio-format=wav -k http://www.youtub.ecom/watch?v=#{@ytid}`
   end
   def set_site_vars(site)
     @css = site
